@@ -21,19 +21,19 @@ public:
         duration = 10;
     }
 
-    void attack() {
+    void attack() override {
         check();
         duration--;
         cout<<"Gun Attack!"<<endl;
     }
 
-    void defend() {
+    void defend() override {
         check();
         duration--;
         cout<<"Gun Defend!"<<endl;
     }
 
-    void check() {
+    void check() override {
         if (duration <= 0) delete this;
     }
 
@@ -48,19 +48,19 @@ public:
         duration = 5;
     }
 
-    void attack() {
+    void attack() override {
         check();
         duration--;
         cout<<"RPG Attack!"<<endl;
     }
 
-    void defend() {
+    void defend() override {
         check();
         duration--;
         cout<<"RPG Defend!"<<endl;
     }
 
-    void check() {
+    void check() override {
         if (duration <= 0) delete this;
     }
 
@@ -83,19 +83,19 @@ public:
 
 class GunCreator: public Creator {
 public:
-    Weapon* create() {
+    Weapon* create() override {
         Weapon* gun = new Gun();
         return gun;
     }
     
-    void oneTime() const {
+    void oneTime() const override {
         Weapon* gun = new Gun();
         gun->attack();
         delete gun;
         return;
     }
 
-    string name() const {
+    string name() const override {
         return "Gun Factory";
     }
 
@@ -103,19 +103,19 @@ public:
 
 class RPGCreator: public Creator {
 public:
-    Weapon* create() {
+    Weapon* create() override {
         Weapon* rpg = new RPG();
         return rpg;
     }
     
-    void oneTime() const {
+    void oneTime() const override {
         Weapon* rpg = new RPG();
         rpg->attack();
         delete rpg;
         return;
     }
 
-    string name() const {
+    string name() const override {
         return "RPG Factory";
     }
 
